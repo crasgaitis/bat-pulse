@@ -20,7 +20,7 @@ void loop() {
   // Peak detection with a 'cooldown' to avoid double-counting one breath
   if (rawValue > THRESHOLD && !isPeak) {
     interval = now - lastPeakTime;
-   
+
     if (interval > 400) { // Ignores noise faster than 150 breaths/min
       respiratoryRate = 60000.0 / interval;
       lastPeakTime = now;
@@ -28,7 +28,7 @@ void loop() {
       newPeak = true;
     }
   }
- 
+
   if (rawValue < (THRESHOLD * 0.7)) {
     isPeak = false; // Reset when signal drops
   }
